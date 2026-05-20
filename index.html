@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport " content="width=device-width, initial-scale=1.0">
+
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </head>
+
+    <body>
+        <div class="login">
+            <button id="dark-mode" type="button">
+                🌙
+            </button>
+            <h1>Bienvenid@</h1>
+
+            <p>Inicia sesion para continuar</p>
+
+          <div class="input-box">
+            <i class="fas fa-envelope"></i>
+
+            <input id="email" type="email" placeholder="Correo electronico">
+         
+           </div>
+
+            <div class="input-box">
+            <i class="fas fa-lock"></i>
+            <input id="password" type="password" placeholder="Contraseña">
+            <i id="eye" class="fas fa-eye"></i>
+           </div>
+    
+      
+           <a href="#" class="forgot">
+            ¿olvidaste tu contraseña?
+           </a>
+
+
+            <button class="login-btn" type="button">Ingresar</button>
+           <p id="mensaje"></p>
+             </div>
+
+        
+        <div id="dashboard">
+             <h1> Hola</h1>
+             <p> Bienvenid@ </p>
+              <div class="cards">
+                  <div class="card">
+                     Estadisticas
+                  </div>
+              <div class="card">
+                    Mensajes
+              </div>
+             <div class="card">
+                   Configuracion
+              </div>
+    
+           </div>
+        </div>
+        <script>
+            
+
+
+            const password = document.getElementById("password");
+            const eye = document.getElementById("eye");
+            const email = document.getElementById("email");
+            const mensaje = document.getElementById("mensaje");
+            const button = document.querySelector(".login-btn");
+            const darkButton = document.getElementById("dark-mode");
+            const login = document.querySelector(".login");
+            const dashboard = document.getElementById("dashboard")
+
+
+            eye.addEventListener("click", function(){
+                if(password.type === "password"){
+                    password.type = "text";
+                    eye.classList.remove("fa-eye");
+                    eye.classList.add("fa-eyes-slash");
+                }else{
+                    password.type = "password";
+                    eye.classList.remove("fa-eye-slash");
+                    eye.classList.add("fa-eye");
+                }
+            });
+
+            darkButton.addEventListener("click", function(){
+                document.body.classList.toggle("dark");
+
+
+             });
+
+            button.addEventListener("click", function(){
+                if (email.value === "" || password.value === "") {
+                    mensaje.textContent="Completa todos los campos";                   
+                }else{
+
+                    button.textContent = "Cargando...";
+                    button.disabled = true;
+
+
+                    setTimeout(function(){
+                        
+                        login.style.display = "none";
+                        dashboard.style.display = "block";
+
+                       
+                    }, 2000);
+                    
+
+                }
+            });
+
+
+         
+            
+           
+        </script>
+    </body>
+
+
+</html>
